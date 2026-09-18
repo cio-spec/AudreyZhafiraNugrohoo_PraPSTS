@@ -3,9 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Computer Lab Reservation System💻</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
-    
+<body class="bg-slate-100 min-h-screen py-10 px-4 flex justify-center items-center font-sans">
+
+    <!-- Container Form -->
+    <div class="bg-white rounded-xl shadow-lg p-6 sm:p-8 max-w-2xl w-full border border-pink-400">
+        
+        <!-- Header -->
+        <div class="border-b pb-4 mb-6">
+            <h1 class="text-2xl sm:text-3xl font-bold text-gray-800">Computer Lab Reservation</h1>
+            <p class="text-gray-500 text-sm mt-1">Please fill out the form below to reserve the computer lab.</p>
+        </div>
+
+        <form action="#" method="POST" class="space-y-6" onsubmit="event.preventDefault(); this.reset(); alert('Reservation submitted successfully!');">
+            
+            <!-- 1. Borrower's Name -->
+            <div>
+                <label for="borrower-name" class="block text-sm font-medium text-gray-700 mb-1">
+                    Borrower's Name👤<span class="text-red-500">*</span>
+                </label>
+                <input type="text" id="borrower-name" name="borrower_name" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition"
+                    placeholder="Enter full name">
+            </div>
+            
+            <!-- Phone Number -->
+            <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">
+                    Phone Number📞<span class="text-red-500">*</span>
+                </label>
+                <input type="tel" id="phone" name="phone_number" required
+                    pattern="[0-9]{10,13}"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition"
+                    placeholder="Masukkan 10-13 digit angka tanpa spasi.">
+            </div>
+            
+ 
+            <!-- 2. Status -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                    Status🏷️<span class="text-red-500">*</span>
+                </label>
+                <div class="flex flex-wrap gap-4 sm:gap-6">
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="radio" name="status" value="Teacher" required class="w-4 h-4 text-pink-600 border-gray-300 focus:ring-pink-500">
+                        <span class="ml-2 text-sm text-gray-700">Teacher</span>
+                    </label>
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="radio" name="status" value="Student" class="w-4 h-4 text-pink-600 border-gray-300 focus:ring-pink-500">
+                        <span class="ml-2 text-sm text-gray-700">Student</span>
+                    </label>
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="radio" name="status" value="Organization" class="w-4 h-4 text-pink-600 border-gray-300 focus:ring-pink-500">
+                        <span class="ml-2 text-sm text-gray-700">Organization</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- 3. Purpose -->
+            <div>
+                <label for="purpose" class="block text-sm font-medium text-gray-700 mb-1">
+                    Purpose🎯<span class="text-red-500">*</span>
+                </label>
+                <input type="text" id="purpose" name="purpose" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition"
+                    placeholder="Practicum, Practice, OSIS Meeting, etc.">
+            </div>
+
+            <!-- 4. Borrowed Lab -->
+            <div>
+                <label for="lab" class="block text-sm font-medium text-gray-700 mb-1">
+                    Borrowed Lab🖥️<span class="text-red-500">*</span>
+                </label>
+                <select id="lab" name="lab" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition bg-white">
+                    <option value="" disabled selected>Select a lab</option>
+                    <option value="Lab 1 (Software)">Lab 1 (Software)</option>
+                    <option value="Lab 2 (Hardware)">Lab 2 (Hardware)</option>
+                </select>
+            </div>
+
+            <!-- 5. Date of Use -->
+            <div>
+                <label for="date" class="block text-sm font-medium text-gray-700 mb-1">
+                    Date of Use📅<span class="text-red-500">*</span>
+                </label>
+                <input type="date" id="date" name="date_of_use" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition">
+            </div>
+
+            <!-- 6 & 7. Start Time & End Time -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                    <label for="start-time" class="block text-sm font-medium text-gray-700 mb-1">
+                        Start Time⏰<span class="text-red-500">*</span>
+                    </label>
+                    <input type="time" id="start-time" name="start_time" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition">
+                </div>
+                <div>
+                    <label for="end-time" class="block text-sm font-medium text-gray-700 mb-1">
+                        End Time⏱️<span class="text-red-500">*</span>
+                    </label>
+                    <input type="time" id="end-time" name="end_time" required
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition">
+                </div>
+            </div>
+
+            <!-- 8. Number of Participants -->
+            <div>
+                <label for="participants" class="block text-sm font-medium text-gray-700 mb-1">
+                    Number of Participants👥<span class="text-red-500">*</span>
+                </label>
+                <input type="number" id="participants" name="participants" min="1" required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition"
+                    placeholder="Enter total participants">
+            </div>
+
+            <!-- 9. Special Requirements -->
+            <div>
+                <label for="requirements" class="block text-sm font-medium text-gray-700 mb-1">
+                    Special Requirements📝
+                </label>
+                <textarea id="requirements" name="special_requirements" rows="3"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none transition"
+                    placeholder="Need internet access, need a projector, etc."></textarea>
+            </div>
+
+            <!-- 10. Submit Button & Challenge Hover Effect -->
+            <div>
+                <button type="submit"
+                    class="w-full bg-pink-500 hover:bg-pink-700 text-white font-semibold py-3 px-4 rounded-lg shadow transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Submit Reservation🚀✨
+                </button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
